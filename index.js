@@ -9,20 +9,26 @@ const html = `<!DOCTYPE html>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>지도</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ClientID"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId="></script>
 </head>
 <body>
 <div id="map" style="width:100%;height:700px;"></div>
 
-<script>
-var mapOptions = {
-    center: new naver.maps.LatLng(36.35230, 127.37848),
-    zoom: 20,
-    indoor: true
-};
 
-var map = new naver.maps.Map('map', mapOptions);
-map.requestIndoorView(true); // 실내지도 활성화
+<script id="code">
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(36.349289, 127.377632), //지도의 초기 중심 좌표
+            zoom: 17, //지도의 초기 줌 레벨
+            minZoom: 8, //지도의 최소 줌 레벨
+            zoomControl: true, //줌 컨트롤의 표시 여부
+            zoomControlOptions: { //줌 컨트롤의 옵션
+                position: naver.maps.Position.TOP_RIGHT
+        }});
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(36.349289, 127.377632),
+            map: map
+        });
+
 </script>
 </body>
 </html>`;
